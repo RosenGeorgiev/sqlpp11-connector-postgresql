@@ -429,7 +429,7 @@ namespace sqlpp
 
         using _database_t = typename Policies::_database_t;
 
-#ifdef WIN32
+#if defined(_MSC_VER) && !defined(__INTEL_COMPILER)
         // workaround for msvc bug https://connect.microsoft.com/VisualStudio/Feedback/Details/2173269
         //	  template <typename... T>
         //	  using _check = logic::all_t<(is_selectable_t<T>::value or is_multi_column_t<T>::value)...>;
